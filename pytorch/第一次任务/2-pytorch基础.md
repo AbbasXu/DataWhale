@@ -45,3 +45,4 @@ PyTorch中的张量一共支持9种数据类型，每种数据类型都对应**C
 |  rand/randn(sizes)  | rand是\[0,1)均匀分布；randn是服从N(0，1)的正态分布 |
 |  normal(mean,std)   |         正态分布(均值为mean，标准差是std)          |
 |     randperm(m)     |                      随机排列                      |
+## 张量操作
