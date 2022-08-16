@@ -10,3 +10,8 @@
 ## Mac
 	 本人的机器型号为MacBook air M1，因此在本来安装的时候是安装的Miniconda，后续pytorch支持M1版本之后，又需要更换至Arm版的anaconda才能安装。
 	![](https://obsidian-1305958072.cos.ap-guangzhou.myqcloud.com/obsidian_img/202208161121394.png)
+
+
+```
+pip3 install --pre torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/nightly/cpu
+```
