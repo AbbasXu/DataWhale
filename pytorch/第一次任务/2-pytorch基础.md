@@ -50,3 +50,27 @@ PyTorch中的张量一共支持9种数据类型，每种数据类型都对应**C
 `x+y`\ `torch.add(x+y)` \ `y.add_(x)` (原值修改)
 ### 索引
 (类似于numpy)，注意得到的结果与原值共享内存，一动都动，不想修改则使用`copy()`。
+### 维度变化
+常见的方法有`torch.view()`和`torch.reshape()`，其中view也是与原值共享内存。
+`torch.reshape()`不保证返回拷贝值，因此常用的方法是通过`clone()`创建张量副本
+## 广播机制
+当对两个形状不同的 Tensor 按元素运算时，可能会触发广播(broadcasting)机制：先适当复制元素使这两个 Tensor 形状相同后再按元素运算。
+```
+x = torch.arange(1, 3).view(1, 2)
+print(x)
+y = torch.arange(1, 4).view(3, 1)
+print(y)
+print(x + y)
+```
+结果：
+```
+tensor([[1, 2]])
+tensor([[1],
+        [2],
+        [3]])
+tensor([[2, 3],
+        [3, 4],
+        [4, 5]])
+```
+
+# 自动求导

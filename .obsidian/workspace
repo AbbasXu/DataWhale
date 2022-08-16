@@ -75,16 +75,6 @@
         "dimension": 41.34396355353075,
         "children": [
           {
-            "id": "10f0cfe3fb3bda93",
-            "type": "leaf",
-            "state": {
-              "type": "outline",
-              "state": {
-                "file": "pytorch/第一次任务/2-pytorch基础.md"
-              }
-            }
-          },
-          {
             "id": "5c41e1d3a4060588",
             "type": "leaf",
             "state": {
@@ -141,6 +131,16 @@
         "dimension": 58.65603644646925,
         "children": [
           {
+            "id": "10f0cfe3fb3bda93",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "pytorch/第一次任务/2-pytorch基础.md"
+              }
+            }
+          },
+          {
             "id": "744b0f6590fa22ed",
             "type": "leaf",
             "state": {
@@ -170,7 +170,7 @@
     "direction": "horizontal",
     "width": 325
   },
-  "active": "356c87d313f09352",
+  "active": "ea76d482b99100eb",
   "lastOpenFiles": [
     "pytorch/第一次任务/1-pytorch安装.md",
     "pytorch/第一次任务/2-pytorch基础.md",
