@@ -82,4 +82,22 @@ tensor([[2, 3],
 <font color=Red>注：广播运算解决张量维度不同的问题，在张量分向量不同时，不同的分量中，有一个需要为1</font>
 # 自动求导
 ## AutoGrad
-`torch.Tensor` 是这个包的核心类。如果设置它的属性 `.requires_grad` 为` True`，那么它将会追踪对于该张量的所有操作。当完成计算后可以通过调用 .`backward()`，来自动计算所有的梯度。这个张量的所有梯度将会自动累加到`.grad`属性。
+`torch.Tensor` 是这个包的核心类。如果设置它的属性 `.requires_grad` 为` True`，那么它将会追踪对于该张量的所有操作。当完成计算后可以通过调用 .`backward()`，来自动计算所有的梯度。这个张量的所有梯度将会自动累加到`.grad`属性。其支持对任意计算图的自动梯度计算。
+- 计算图是由节点和边组成的，其中的一些节点是数据，一些是数据之间的运算
+- 计算图实际上就是变量之间的关系
+- tensor 和 function 互相连接生成的一个有向无环图
+### 一个简单的例子
+
+```
+import torch
+
+x = torch.ones(5)  # input tensor
+y = torch.zeros(3)  # expected output
+w = torch.randn(5, 3, requires_grad=True)
+b = torch.randn(3, requires_grad=True)
+z = torch.matmul(x, w)+b #x 和 w 矩阵相乘，再加上 bias b
+loss = torch.nn.functional.binary_cross_entropy_with_logits(z, y)
+
+```
+其计算图如下所示
+![](https://obsidian-1305958072.cos.ap-guangzhou.myqcloud.com/obsidian_img/202208161731134.png)
