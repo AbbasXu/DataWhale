@@ -123,7 +123,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       },
       {
         "id": "87ba6351784ad035",
@@ -170,7 +170,7 @@
     "direction": "horizontal",
     "width": 325
   },
-  "active": "356c87d313f09352",
+  "active": "ea76d482b99100eb",
   "lastOpenFiles": [
     "pytorch/第一次任务/1-pytorch安装.md",
     "pytorch/第一次任务/1-pytorch安装.pdf",

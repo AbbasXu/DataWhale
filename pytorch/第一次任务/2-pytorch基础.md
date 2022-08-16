@@ -101,3 +101,10 @@ loss = torch.nn.functional.binary_cross_entropy_with_logits(z, y)
 ```
 其计算图如下所示
 ![](https://obsidian-1305958072.cos.ap-guangzhou.myqcloud.com/obsidian_img/202208161731134.png)
+## 梯度
+tensor tensor求梯度的基础属性
+- `requires_grad`表示该tensor是否支持梯度计算。如果`.requires_grad`为 True，那么它会追踪该tensor的所有计算操作。
+- `grad`记录该tensor的梯度。在tensor完成计算后，调用`.backward()`计算出所有梯度，同时累加到.grad属性中。
+- `grad_fn`会记录作用在该tensor上的计算`Function`。如果该tensor是用户创建而非通过运算得出的，该tensor的`.grad_fn`就是None(如下面的例子所示)
+- `is_leaf`:如果一个tensor是用户创建而非用过运算得出，那么该tensor在无环图中就是一个叶子节点，`.is_leaf=True`。
+- 引进叶子节点概念的目的：是为了节约内存，在反向传播结束后，非叶子节点的梯度默认会被释放掉，不会记录。
