@@ -2,7 +2,7 @@
 > Author : AbbasXu
 > Date : [[2022-08-16]]
 > Title : pytorch基础
-> Keywords : #pytroch #张量
+> Keywords : #pytroch #张量 #AutoGrad #并行计算
 ---
 # 张量
 ## 简介
@@ -80,9 +80,11 @@ tensor([[2, 3],
         [4, 5]])
 ```
 <font color=Red>注：广播运算解决张量维度不同的问题，在张量分向量不同时，不同的分量中，有一个需要为1</font>
+
+---
 # 自动求导
 ## AutoGrad
-`torch.Tensor` 是这个包的核心类。如果设置它的属性 `.requires_grad` 为` True`，那么它将会追踪对于该张量的所有操作。当完成计算后可以通过调用 .`backward()`，来自动计算所有的梯度。这个张量的所有梯度将会自动累加到`.grad`属性。其支持对任意计算图的自动梯度计算。
+`torch.Tensor` 是这个包的核心类。如果设置它的属性 `.requires_grad` 为` True`，那么它将会追踪对于该张量的所有操作。当完成计算后可以通过调用 .`backward()`，来自动计算所有的梯度。这个张量的所有梯度将会自动累加到`.grad`属性。其支持对任意计算图的自动梯度计算。(默认False)
 - 计算图是由节点和边组成的，其中的一些节点是数据，一些是数据之间的运算
 - 计算图实际上就是变量之间的关系
 - tensor 和 function 互相连接生成的一个有向无环图
@@ -108,3 +110,31 @@ tensor tensor求梯度的基础属性
 - `grad_fn`会记录作用在该tensor上的计算`Function`。如果该tensor是用户创建而非通过运算得出的，该tensor的`.grad_fn`就是None(如下面的例子所示)
 - `is_leaf`:如果一个tensor是用户创建而非用过运算得出，那么该tensor在无环图中就是一个叶子节点，`.is_leaf=True`。
 - 引进叶子节点概念的目的：是为了节约内存，在反向传播结束后，非叶子节点的梯度默认会被释放掉，不会记录。
+
+在**Pytorch**中, 反向传播是依靠`.backward()`实现的。
+可以通过`.detach()`获得一个新的Tensor, 拥有相同的内容但不需要自动求导。 
+
+---
+# 并行计算
+## 意义
+让多个GPU来参与训练，减少训练时间。
+## CUDA
+在编写程序中，当我们使用了` .cuda() `时，其功能是让我们的模型或者数据从CPU迁移到GPU(0)当中，通过GPU开始计算。
+- 注：
+	- 我们使用GPU时使用的是.cuda()而不是使用.gpu()。这是因为当前GPU的编程接口采用CUDA，但是市面上的GPU并不是都支持CUDA，只有部分NVIDIA的GPU才支持，AMD的GPU编程接口采用的是OpenCL，在现阶段PyTorch并不支持。
+	- 数据在GPU和CPU之间进行传递时会比较耗时，我们应当尽量避免数据的切换。
+	- GPU运算很快，但是在使用简单的操作时，我们应该尽量使用CPU去完成。
+	- 当我们的服务器上有多个GPU，我们应该指明我们使用的GPU是哪一块，如果我们不设置的话，tensor.cuda()方法会默认将tensor保存到第一块GPU上，等价于tensor.cuda(0)，这将会导致爆出out of memory的错误。我们可以通过以下两种方式继续设置。
+
+	```
+	1、#设置在文件最开始部分
+	import os
+	os.environ["CUDA_VISIBLE_DEVICE"] = "2" # 设置默认的显卡
+	2、
+	CUDA_VISBLE_DEVICE=0,1 python train.py # 使用0，1两块GPU
+	```
+
+## 常见并行方法
+- 网络结构分布到不同的设备中(Network partitioning)
+- 同一层的任务分布到不同数据中(Layer-wise partitioning)
+- 不同的数据分布到不同的设备中，执行相同的任务(Data parallelism)
