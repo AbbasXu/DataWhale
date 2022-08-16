@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "pytorch/第一次任务/1-pytorch安装.md",
+            "file": "pytorch/第一次任务/2-pytorch基础.md",
             "mode": "source",
             "backlinks": true,
             "source": false
@@ -33,7 +33,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:#系统：Mac/Windows/Linux",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -80,7 +80,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "pytorch/第一次任务/1-pytorch安装.md"
+                "file": "pytorch/第一次任务/2-pytorch基础.md"
               }
             }
           },
@@ -109,7 +109,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "pytorch/第一次任务/1-pytorch安装.md",
+                "file": "pytorch/第一次任务/2-pytorch基础.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -126,7 +126,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "pytorch/第一次任务/1-pytorch安装.md",
+                "file": "pytorch/第一次任务/2-pytorch基础.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -173,6 +173,8 @@
   },
   "active": "356c87d313f09352",
   "lastOpenFiles": [
+    "pytorch/第一次任务/1-pytorch安装.md",
+    "pytorch/第一次任务/2-pytorch基础.md",
     "template/LeetCode-practice template.md",
     "Learninig/LeetCode/1 - 两数之和 TwoSum.md",
     "杂记/Obsidian 语法.md",
@@ -180,8 +182,6 @@
     "杂记/梯子.md",
     "Learninig/LeetCode/1 - 两数之和 twoSum.md",
     "Home.md",
-    "Learninig/To Learn.md",
-    "Learninig/LeetCode/1-两数之和 twoSum.md",
-    "Learninig/LeetCode/1.md"
+    "Learninig/To Learn.md"
   ]
 }
