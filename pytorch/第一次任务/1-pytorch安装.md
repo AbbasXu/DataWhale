@@ -2,6 +2,7 @@
 > Author : AbbasXu
 > Date : [[2022-08-16]]
 > Title : pytorch的安装
+> Keywords : #pytroch #环境配置
 
 ---
 # Start
