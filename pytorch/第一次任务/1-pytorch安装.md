@@ -15,3 +15,5 @@
 ```
 pip3 install --pre torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/nightly/cpu
 ```
+![](https://obsidian-1305958072.cos.ap-guangzhou.myqcloud.com/obsidian_img/202208161137429.png)
+
