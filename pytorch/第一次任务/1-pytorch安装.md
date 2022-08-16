@@ -22,5 +22,7 @@ import torch
 torch.__version__
 torch.device("mps")
 
-	如下显示证明已经支持GPU加速
+	如下图显示证明已经支持GPU加速
 ![](https://obsidian-1305958072.cos.ap-guangzhou.myqcloud.com/obsidian_img/202208161137429.png)
+## Windows
+	针对Windows和Linux(Ubuntu)，仅需要注意在安装GPU版本的pytorch时，注意CUDA、CUD
