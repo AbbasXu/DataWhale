@@ -1,0 +1,187 @@
+{
+  "main": {
+    "id": "7f1164d7e6bd03ee",
+    "type": "split",
+    "children": [
+      {
+        "id": "356c87d313f09352",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "pytorch/第一次任务/1-pytorch安装.md",
+            "mode": "source",
+            "backlinks": true,
+            "source": false
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "92cfa3b82b781a21",
+    "type": "split",
+    "children": [
+      {
+        "id": "845aff097c8313e6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4f5141808fdad7d0",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#CPP",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "7ecbe7b5df0743ae",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "92e3749e1382666b",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "horizontal",
+    "width": 285.5
+  },
+  "right": {
+    "id": "cec1e9e893e534b2",
+    "type": "split",
+    "children": [
+      {
+        "id": "499543d133bd67aa",
+        "type": "tabs",
+        "dimension": 41.34396355353075,
+        "children": [
+          {
+            "id": "10f0cfe3fb3bda93",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "pytorch/第一次任务/1-pytorch安装.md"
+              }
+            }
+          },
+          {
+            "id": "5c41e1d3a4060588",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "ea76d482b99100eb",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {}
+            }
+          },
+          {
+            "id": "f8bbda403ef3d4fc",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "pytorch/第一次任务/1-pytorch安装.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "3390504443e6ddef",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "pytorch/第一次任务/1-pytorch安装.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ],
+        "currentTab": 2
+      },
+      {
+        "id": "87ba6351784ad035",
+        "type": "tabs",
+        "dimension": 58.65603644646925,
+        "children": [
+          {
+            "id": "744b0f6590fa22ed",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {}
+            }
+          },
+          {
+            "id": "fd6b48e78a842711",
+            "type": "leaf",
+            "state": {
+              "type": "recent-files",
+              "state": {}
+            }
+          },
+          {
+            "id": "8570f9985f9fe0be",
+            "type": "leaf",
+            "state": {
+              "type": "todo",
+              "state": {}
+            }
+          }
+        ],
+        "currentTab": 2
+      }
+    ],
+    "direction": "horizontal",
+    "width": 276.5
+  },
+  "active": "ea76d482b99100eb",
+  "lastOpenFiles": [
+    "template/LeetCode-practice template.md",
+    "Learninig/LeetCode/1 - 两数之和 TwoSum.md",
+    "杂记/Obsidian 语法.md",
+    "杂记/不知道是什么东西.md",
+    "杂记/梯子.md",
+    "Learninig/LeetCode/1 - 两数之和 twoSum.md",
+    "Home.md",
+    "Learninig/To Learn.md",
+    "Learninig/LeetCode/1-两数之和 twoSum.md",
+    "Learninig/LeetCode/1.md"
+  ]
+}

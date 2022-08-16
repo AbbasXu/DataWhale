@@ -1,0 +1,40 @@
+{
+  "choices": [
+    {
+      "id": "48624cb2-01f6-4be4-9b1f-9df8eb0a3a64",
+      "name": "LeetCode practice",
+      "type": "Capture",
+      "command": true,
+      "appendLink": false,
+      "captureTo": "Learninig/LeetCode/{{VALUE}}",
+      "captureToActiveFile": false,
+      "createFileIfItDoesntExist": {
+        "enabled": true,
+        "createWithTemplate": true,
+        "template": "template/LeetCode-practice template"
+      },
+      "format": {
+        "enabled": false,
+        "format": ""
+      },
+      "insertAfter": {
+        "enabled": false,
+        "after": "",
+        "insertAtEnd": false,
+        "createIfNotFound": false,
+        "createIfNotFoundLocation": "top"
+      },
+      "prepend": true,
+      "task": false,
+      "openFileInNewTab": {
+        "enabled": false,
+        "direction": "vertical",
+        "focus": true
+      },
+      "openFile": true,
+      "openFileInMode": "default"
+    }
+  ],
+  "macros": [],
+  "inputPrompt": "single-line"
+}

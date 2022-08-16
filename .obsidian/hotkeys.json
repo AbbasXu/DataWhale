@@ -1,0 +1,30 @@
+{
+  "calendar:show-calendar-view": [],
+  "editor:toggle-highlight": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "H"
+    }
+  ],
+  "quickadd:runQuickAdd": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "1"
+    }
+  ],
+  "obsidian-excalidraw-plugin:insert-link-to-element": [],
+  "hotkeysplus-obsidian:duplicate-lines-down": [],
+  "hotkeysplus-obsidian:duplicate-lines-up": [],
+  "hotkeysplus-obsidian:clear-current-line": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "U"
+    }
+  ]
+}
