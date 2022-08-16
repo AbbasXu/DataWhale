@@ -33,7 +33,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#CPP",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -171,7 +171,7 @@
     "direction": "horizontal",
     "width": 276.5
   },
-  "active": "ea76d482b99100eb",
+  "active": "7ecbe7b5df0743ae",
   "lastOpenFiles": [
     "template/LeetCode-practice template.md",
     "Learninig/LeetCode/1 - 两数之和 TwoSum.md",
