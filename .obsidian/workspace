@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "pytorch/第一次任务/2-pytorch基础.md",
+            "file": "pytorch/第二次任务/3-pytorch的主要组成模块.md",
             "mode": "source",
             "backlinks": true,
             "source": false
@@ -33,7 +33,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#pytroch",
+                "query": "tag:#AutoGrad",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -58,8 +58,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -99,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "pytorch/第一次任务/2-pytorch基础.md",
+                "file": "pytorch/第二次任务/3-pytorch的主要组成模块.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "pytorch/第一次任务/2-pytorch基础.md",
+                "file": "pytorch/第二次任务/3-pytorch的主要组成模块.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -136,7 +135,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "pytorch/第一次任务/2-pytorch基础.md"
+                "file": "pytorch/第二次任务/3-pytorch的主要组成模块.md"
               }
             }
           },
@@ -170,10 +169,10 @@
     "direction": "horizontal",
     "width": 325
   },
-  "active": "356c87d313f09352",
+  "active": "4f5141808fdad7d0",
   "lastOpenFiles": [
-    "pytorch/第一次任务/2-pytorch基础.pdf",
     "pytorch/第一次任务/2-pytorch基础.md",
+    "pytorch/第一次任务/2-pytorch基础.pdf",
     "pytorch/第一次任务/1-pytorch安装.md",
     "pytorch/第一次任务/1-pytorch安装.pdf",
     "template/LeetCode-practice template.md",
