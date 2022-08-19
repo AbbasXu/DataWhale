@@ -66,3 +66,5 @@ class MLP(nn.Module):
 ```
 ## 神经网络常见的层
 - 二维卷积层
+	- 填充（padding）
+	-  
