@@ -230,3 +230,26 @@ model.eval()   # 验证/测试状态
 7. 使用优化器更新模型参数
 ---
 # Pytorch优化器
+- `torch.optim`
+	- torch.optim.ASGD
+	- torch.optim.Adadelta
+	- torch.optim.Adagrad
+	- torch.optim.Adam
+	- torch.optim.AdamW
+	- torch.optim.Adamax
+	- torch.optim.LBFGS
+	- torch.optim.RMSprop
+	- torch.optim.Rprop
+	- torch.optim.SGD
+	- torch.optim.SparseAdam
+
+而以上这些优化算法均继承于`Optimizer`，其含有三个属性
+- `defaults`：存储的是优化器的超参数
+- `state`：参数的缓存
+- `param_groups`：管理的参数组，是一个list，其中每个元素是一个字典，顺序是params，lr，momentum，dampening，weight_decay，nesterov
+同时含有以下几种方法：
+- `zero_grad()`：清空所管理参数的梯度，PyTorch的特性是张量的梯度不自动清零，因此每次反向传播后都需要清空梯度。
+- `step()`：执行一步梯度更新，参数更新。
+- `add_param_group()`：添加参数组
+- `load_state_dict() `：加载状态参数字典，可以用来进行模型的断点续训练，继续上次的参数进行训练
+- `state_dict()`：获取优化器当前状态信息字典
