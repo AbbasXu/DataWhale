@@ -7,13 +7,8 @@
         "id": "356c87d313f09352",
         "type": "leaf",
         "state": {
-          "type": "markdown",
-          "state": {
-            "file": "pytorch/第二次任务/4-pytorch基础实战.md",
-            "mode": "source",
-            "backlinks": true,
-            "source": false
-          }
+          "type": "empty",
+          "state": {}
         }
       }
     ],
@@ -99,7 +94,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "pytorch/第二次任务/4-pytorch基础实战.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,7 +110,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "pytorch/第二次任务/4-pytorch基础实战.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -135,9 +128,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "pytorch/第二次任务/4-pytorch基础实战.md"
-              }
+              "state": {}
             }
           },
           {
@@ -170,7 +161,7 @@
     "direction": "horizontal",
     "width": 325
   },
-  "active": "356c87d313f09352",
+  "active": "7ecbe7b5df0743ae",
   "lastOpenFiles": [
     "pytorch/第一次任务/1-pytorch安装.pdf",
     "pytorch/第二次任务/4-pytorch基础实战.md",
