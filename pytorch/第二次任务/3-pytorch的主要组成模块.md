@@ -122,3 +122,6 @@ class Net(nn.Module):
 net = Net()
 print(net)
 ```
+注：`torch.nn`只支持小批量处理 (mini-batches）。整个` torch.nn `包只支持小批量样本的输入，不支持单个样本的输入。比如，`nn.Conv2d `接受一个4维的张量，即`nSamples x nChannels x Height x Width` 如果是一个单独的样本，只需要使用`input.unsqueeze(0) `来添加一个“假的”批大小维度。
+
+# 模型初始化
