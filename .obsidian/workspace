@@ -7,8 +7,13 @@
         "id": "356c87d313f09352",
         "type": "leaf",
         "state": {
-          "type": "empty",
-          "state": {}
+          "type": "markdown",
+          "state": {
+            "file": "pytorch/第二次任务/4-pytorch基础实战.md",
+            "mode": "source",
+            "backlinks": true,
+            "source": false
+          }
         }
       }
     ],
@@ -94,6 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "pytorch/第二次任务/4-pytorch基础实战.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -110,6 +116,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "pytorch/第二次任务/4-pytorch基础实战.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -128,7 +135,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "pytorch/第二次任务/4-pytorch基础实战.md"
+              }
             }
           },
           {
@@ -161,17 +170,17 @@
     "direction": "horizontal",
     "width": 325
   },
-  "active": "7ecbe7b5df0743ae",
+  "active": "356c87d313f09352",
   "lastOpenFiles": [
-    "pytorch/第一次任务/1-pytorch安装.pdf",
-    "pytorch/第二次任务/4-pytorch基础实战.md",
     "pytorch/第二次任务/3-pytorch的主要组成模块.md",
     "pytorch/第二次任务/3-pytorch的主要组成模块.pdf",
+    "pytorch/第二次任务/4-pytorch基础实战.pdf",
+    "pytorch/第二次任务/4-pytorch基础实战.md",
+    "pytorch/第一次任务/1-pytorch安装.pdf",
     "pytorch/第一次任务/2-pytorch基础.md",
     "pytorch/第一次任务/1-pytorch安装.md",
     "pytorch/第一次任务/2-pytorch基础.pdf",
     "template/LeetCode-practice template.md",
-    "Learninig/LeetCode/1 - 两数之和 TwoSum.md",
-    "杂记/Obsidian 语法.md"
+    "Learninig/LeetCode/1 - 两数之和 TwoSum.md"
   ]
 }
