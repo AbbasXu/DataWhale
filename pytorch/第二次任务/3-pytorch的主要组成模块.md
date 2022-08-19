@@ -26,3 +26,7 @@ os.environ['CUDA_VISIBLE_DEVICES'] = '0,1'
 device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
 ```
 # 数据读入
+数据输入的过程可以定义自己的Dataset类来实现快速读取，，定义的类需要继承PyTorch自身的Dataset类。主要包含三个函数：
+- `__init__`: 用于向类中传入外部参数，同时定义样本集
+- `__getitem__`: 用于逐个读取样本集合中的元素，可以进行一定的变换，并将返回训练/验证所需的数据
+- `__len`__: 用于返回数据集的样本数
