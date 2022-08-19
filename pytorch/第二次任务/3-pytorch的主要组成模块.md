@@ -214,4 +214,19 @@ $$\operatorname{loss}(x, y)=\left\{\begin{array}{ll}
 1-\cos \left(x_{1}, x_{2}\right), & \text { if } y=1 \\
 \max \left\{0, \cos \left(x_{1}, x_{2}\right)-\text { margin }\right\} & \text { if } y=-1
 \end{array}\right.$$
-# xunl 
+# 训练与评估
+下列操作二选一即可：
+```
+model.train()   # 训练状态
+model.eval()   # 验证/测试状态
+```
+整个训练过程如下所示：
+1. 进入循环
+2. 数据放入GPU中
+3. 开始用当前批次数据做训练时，应当先将优化器的梯度置零
+4. 之后将data送入模型中训练
+5. 根据预先定义的criterion计算损失函数
+6. 将loss反向传播回网络
+7. 使用优化器更新模型参数
+---
+# Pytorch优化器
