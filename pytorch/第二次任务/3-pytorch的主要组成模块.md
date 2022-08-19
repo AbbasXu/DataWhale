@@ -43,7 +43,6 @@ device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
 ## 神经网络构建
 Module 类是 nn 模块里提供的一个模型构造类，是所有神经⽹网络模块的基类，我们可以继承它来定义我们想要的模型。下面继承 Module 类构造多层感知机。这里定义的 MLP 类重载了 Module 类的 init 函数和 forward 函数。它们分别用于创建模型参数和定义前向计算。前向计算也即正向传播。
 
-
 ```
 import torch
 from torch import nn
