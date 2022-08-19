@@ -25,6 +25,7 @@ os.environ['CUDA_VISIBLE_DEVICES'] = '0,1'
 # 方案二：使用“device”，后续对要使用GPU的变量用.to(device)即可
 device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
 ```
+---
 # 数据读入
 数据输入的过程可以定义自己的Dataset类来实现快速读取，，定义的类需要继承PyTorch自身的Dataset类。主要包含三个函数：
 - `__init__`: 用于向类中传入外部参数，同时定义样本集
@@ -38,7 +39,7 @@ device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
 - num_workers：有多少个进程用于读取数据
 - shuffle：是否将读入的数据打乱
 - drop_last：对于样本最后一部分没有达到批次数的样本，使其不再参与训练
-
+---
 # 模型构建
 ## 神经网络构建
 Module 类是 nn 模块里提供的一个模型构造类，是所有神经⽹网络模块的基类，我们可以继承它来定义我们想要的模型。下面继承 Module 类构造多层感知机。这里定义的 MLP 类重载了 Module 类的 init 函数和 forward 函数。它们分别用于创建模型参数和定义前向计算。前向计算也即正向传播。
@@ -124,4 +125,27 @@ print(net)
 ```
 注：`torch.nn`只支持小批量处理 (mini-batches）。整个` torch.nn `包只支持小批量样本的输入，不支持单个样本的输入。比如，`nn.Conv2d `接受一个4维的张量，即`nSamples x nChannels x Height x Width` 如果是一个单独的样本，只需要使用`input.unsqueeze(0) `来添加一个“假的”批大小维度。
 
+---
 # 模型初始化
+torch.nn.init
+计算增益：
+| nonlinearity    | gain                 |
+| --------------- | -------------------- |
+| Linear/Identity | 1                    |
+| Conv{1,2,3}D    | 1                    |
+| Sigmod          | 1                    |
+| Tanh            | 5月3日               |
+| ReLU            | sqrt(2)              |
+| Leaky Relu      | sqrt(2/1+neg_slop^2) |
+对`conv`进行kaiming初始化，对linear进行常数初始化......最后将这些函数封装成`initialize_weights()`
+
+---
+# 损失函数
+<font color=Red>它是数据输入到模型当中，产生的结果与真实标签的评价指标</font>
+## 二分类交叉熵损失函数
+`torch.nn.BCELoss(weight=None, size_average=None, reduce=None, reduction='mean')`
+计算公式如下：
+$$\ell(x, y)=\left\{\begin{array}{ll}
+\operatorname{mean}(L), & \text { if reduction }=\text { 'mean' } \\
+\operatorname{sum}(L), & \text { if reduction }=\text { 'sum' }
+\end{array}\right.$$

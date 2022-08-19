@@ -33,7 +33,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#AutoGrad",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
