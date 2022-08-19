@@ -142,10 +142,76 @@ torch.nn.init
 ---
 # 损失函数
 <font color=Red>它是数据输入到模型当中，产生的结果与真实标签的评价指标</font>
+仅记录部分常用的损失函数
 ## 二分类交叉熵损失函数
+### 功能
+计算二分类任务时的交叉熵（Cross Entropy）函数。在二分类中，label是{0,1}。对于进入交叉熵函数的input为概率分布的形式。一般来说，input为sigmoid激活层的输出，或者softmax的输出。
+### 函数
 `torch.nn.BCELoss(weight=None, size_average=None, reduce=None, reduction='mean')`
-计算公式如下：
+### 主要参数
+- weight:每个类别的loss设置权值
+- size_average:数据为bool，为True时，返回的loss为平均值；为False时，返回的各样本的loss之和。
+- reduce:数据类型为bool，为True时，loss的返回是标量。
+### 计算公式
 $$\ell(x, y)=\left\{\begin{array}{ll}
 \operatorname{mean}(L), & \text { if reduction }=\text { 'mean' } \\
 \operatorname{sum}(L), & \text { if reduction }=\text { 'sum' }
 \end{array}\right.$$
+##  交叉熵损失函数
+### 功能
+计算交叉熵函数
+### 函数
+`torch.nn.MSELoss(size_average=None, reduce=None, reduction='mean')`
+### 主要参数
+- weight:weight:每个类别的loss设置权值。
+- size_average:数据为bool，为True时，返回的loss为平均值；为False时，返回的各样本的loss之和。
+- ignore_index:忽略某个类的损失函数。 
+- reduce:数据类型为bool，为True时，loss的返回是标量。
+### 计算公式
+$$\operatorname{loss}(x, \text { class })=-\log \left(\frac{\exp (x[\text { class }])}{\sum_{j} \exp (x[j])}\right)=-x[\text { class }]+\log \left(\sum_{j} \exp (x[j])\right)$$
+
+---
+## MSE损失函数
+### 功能
+计算输出y和真实标签target之差的平方。
+和L1Loss一样，MSELoss损失函数中，reduction参数决定了计算模式。有三种计算模式可选：none：逐个元素计算。 sum：所有元素求和，返回标量。默认计算方式是求平均。
+### 函数
+`torch.nn.CrossEntropyLoss(weight=None, size_average=None, ignore_index=-100, reduce=None, reduction='mean')`
+### 主要参数
+无
+### 计算公式
+$$l_{n}=\left(x_{n}-y_{n}\right)^{2}$$
+
+---
+## KL散度
+### 功能
+计算KL散度，也就是计算相对熵。用于连续分布的距离度量，并且对离散采用的连续输出空间分布进行回归通常很有用
+### 函数
+`torch.nn.KLDivLoss(size_average=None, reduce=None, reduction='mean', log_target=False)`
+### 主要参数
+- reduction：计算模式，可为 none/sum/mean/batchmean。 
+	- none：逐个元素计算。
+	- sum：所有元素求和，返回标量。
+	- mean：加权平均，返回标量。
+	- batchmean：batchsize 维度求平均值。
+### 计算公式
+$$\begin{aligned}
+D_{\mathrm{KL}}(P, Q)=\mathrm{E}_{X \sim P}\left[\log \frac{P(X)}{Q(X)}\right] &=\mathrm{E}_{X \sim P}[\log P(X)-\log Q(X)] \\
+&=\sum_{i=1}^{n} P\left(x_{i}\right)\left(\log P\left(x_{i}\right)-\log Q\left(x_{i}\right)\right)
+\end{aligned}$$
+
+---
+## 余弦相似度
+### 功能
+ 对两个向量做余弦相似度
+### 函数
+`torch.nn.CosineEmbeddingLoss(margin=0.0, size_average=None, reduce=None, reduction='mean')`
+### 主要参数
+- reduction：计算模式，可为 none/sum/mean。
+- margin：可取值[-1,1] ，推荐为[0,0.5] 。
+### 计算公式
+$$\operatorname{loss}(x, y)=\left\{\begin{array}{ll}
+1-\cos \left(x_{1}, x_{2}\right), & \text { if } y=1 \\
+\max \left\{0, \cos \left(x_{1}, x_{2}\right)-\text { margin }\right\} & \text { if } y=-1
+\end{array}\right.$$
+# xunl 
