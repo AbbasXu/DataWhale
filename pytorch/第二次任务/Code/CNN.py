@@ -44,3 +44,84 @@ import matplotlib.pyplot as plt
 image, label = next(iter(train_loader))
 print(image.shape, label.shape)
 plt.imshow(image[0][0], cmap="gray")
+
+# 模型设计
+class Net(nn.Module):
+    def __init__(self):
+        super(Net, self).__init__()
+        self.conv = nn.Sequential(
+            nn.Conv2d(1, 32, 5),
+            nn.ReLU(),
+            nn.MaxPool2d(2, stride=2),
+            nn.Dropout(0.3),
+            nn.Conv2d(32, 64, 5),
+            nn.ReLU(),
+            nn.MaxPool2d(2, stride=2),
+            nn.Dropout(0.3)
+        )
+        self.fc = nn.Sequential(
+            nn.Linear(64 * 4 * 4, 512),
+            nn.ReLU(),
+            nn.Linear(512, 10)
+        )
+
+    def forward(self, x):
+        x = self.conv(x)
+        x = x.view(-1, 64 * 4 * 4)
+        x = self.fc(x)
+        # x = nn.functional.normalize(x)
+        return x
+
+
+model = Net()
+model = model.to(device)
+# model = nn.DataParallel(model).cuda()   # 多卡训练时的写法，之后的课程中会进一步讲解
+
+# 设定损失函数
+criterion = nn.CrossEntropyLoss()
+
+# 设定优化器
+optimizer = optim.Adam(model.parameters(), lr=0.001)
+
+# 训练与测试
+
+
+def train(epoch):
+    model.train()
+    train_loss = 0
+    for data, label in train_loader:
+        data, label = data.to(device), label.to(device)
+        optimizer.zero_grad()
+        output = model(data)
+        loss = criterion(output, label)
+        loss.backward()
+        optimizer.step()
+        train_loss += loss.item()*data.size(0)
+    train_loss = train_loss/len(train_loader.dataset)
+    print('Epoch: {} \tTraining Loss: {:.6f}'.format(epoch, train_loss))
+
+
+def val(epoch):
+    model.eval()
+    val_loss = 0
+    gt_labels = []
+    pred_labels = []
+    with torch.no_grad():
+        for data, label in test_loader:
+            data, label = data.to(device), label.to(device)
+            output = model(data)
+            preds = torch.argmax(output, 1)
+            gt_labels.append(label.cpu().data.numpy())
+            pred_labels.append(preds.cpu().data.numpy())
+            loss = criterion(output, label)
+            val_loss += loss.item()*data.size(0)
+    val_loss = val_loss/len(test_loader.dataset)
+    gt_labels, pred_labels = np.concatenate(gt_labels), np.concatenate(pred_labels)
+    acc = np.sum(gt_labels==pred_labels)/len(pred_labels)
+    print('Epoch: {} \tValidation Loss: {:.6f}, Accuracy: {:6f}'.format(epoch, val_loss, acc))
+
+
+for epoch in range(1, epochs+1):
+    train(epoch)
+    val(epoch)
+
