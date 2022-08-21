@@ -186,5 +186,55 @@ class Model(nn.Module):
 以torchvision的resnet50模型为例，同时输出1000维的倒数第二层和10维的最后一层结果。
 
 ```
+class Model(nn.Module):
+    def __init__(self, net):
+        super(Model, self).__init__()
+        self.net = net
+        self.relu = nn.ReLU()
+        self.dropout = nn.Dropout(0.5)
+        self.fc1 = nn.Linear(1000, 10, bias=True)
+        self.output = nn.Softmax(dim=1)
+        
+    def forward(self, x, add_variable):
+        x1000 = self.net(x)
+        x10 = self.dropout(self.relu(x1000))
+        x10 = self.fc1(x10)
+        x10 = self.output(x10)
+        return x10, x1000
+```
 
+# PyTorch模型保存与读取
+## 模型存储格式
+- pkl
+- pt（官方文档常用）
+- pth
+## 模型存储内容
+两种方案：
+- 保存整个模型（包括权重和模型结构）
+- 仅保存模型权重
+## 单卡和多卡模型存储的区别
+如果要使用多卡训练的话，需要对模型使用torch.nn.DataParallel。
+## 情况分类讨论
+目前和可预想的未来一段时间内我只接触到单卡保存和单卡训练的情况，因此仅记录该情况。
+
+```
+import os
+import torch
+from torchvision import models
+
+os.environ['CUDA_VISIBLE_DEVICES'] = '0'   #这里替换成希望使用的GPU编号
+model = models.resnet152(pretrained=True)
+model.cuda()
+
+# 保存+读取整个模型
+torch.save(model, save_dir)
+loaded_model = torch.load(save_dir)
+loaded_model.cuda()
+
+# 保存+读取模型权重
+torch.save(model.state_dict(), save_dir)
+loaded_dict = torch.load(save_dir)
+loaded_model = models.resnet152()   #注意这里需要对模型结构有定义
+loaded_model.state_dict = loaded_dict
+loaded_model.cuda()
 ```
