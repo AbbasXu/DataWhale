@@ -137,3 +137,54 @@ ResNet(
 )
 ```
 
+这里模型结构是为了适配ImageNet预训练的权重，因此最后全连接层（fc）的输出节点数是1000。
+
+假设我们要用这个resnet模型去做一个10分类的问题，就应该修改模型的fc层，将其输出节点数替换为10。另外，我们觉得一层全连接层可能太少了，想再加一层。可以做如下修改：
+
+
+```
+from collections import OrderedDict
+classifier = nn.Sequential(OrderedDict([('fc1', nn.Linear(2048, 128)),
+                          ('relu1', nn.ReLU()), 
+                          ('dropout1',nn.Dropout(0.5)),
+                          ('fc2', nn.Linear(128, 10)),
+                          ('output', nn.Softmax(dim=1))
+                          ]))
+    
+net.fc = classifier
+```
+
+这里的操作相当于将模型（net）最后名称为“fc”的层替换成了名称为“classifier”的结构，该结构是我们自己定义的。
+## 添加外部输入 
+使用场景：在模型训练中，除了已有模型的输入之外，还需要输入额外的信息。
+即将原模型添加输入位置前的部分作为一个整体，同时在forward中定义好原模型不变的部分、添加的输入和后续层之间的连接关系，从而完成模型的修改。
+以torchvision的resnet50模型为基础，在倒数第二层增加一个额外的输入变量add_variable来辅助预测。
+
+```
+class Model(nn.Module):
+    def __init__(self, net):
+        super(Model, self).__init__()
+        self.net = net
+        self.relu = nn.ReLU()
+        self.dropout = nn.Dropout(0.5)
+        self.fc_add = nn.Linear(1001, 10, bias=True)
+        self.output = nn.Softmax(dim=1)
+        
+    def forward(self, x, add_variable):
+        x = self.net(x)
+        x = torch.cat((self.dropout(self.relu(x)), add_variable.unsqueeze(1)),1)
+        x = self.fc_add(x)
+        x = self.output(x)
+        return x
+```
+
+这里对外部输入变量"add_variable"进行unsqueeze操作（<font color=red>作用是用于增加维度，操作是针对于tensor张量，增加一个维数为1的维度。</font>）是为了和net输出的tensor保持维度一致，常用于add_variable是单一数值 (scalar) 的情况，此时add_variable的维度是 (batch_size, )，需要在第二维补充维数1，从而可以和tensor进行torch.cat操作。
+
+## 添加额外输出
+使用场景：在模型训练中，除了模型最后的输出外，我们需要输出模型某一中间层的结果，以施加额外的监督，获得更好的中间层结果。
+基本的思路是修改模型定义中forward函数的return变量。
+以torchvision的resnet50模型为例，同时输出1000维的倒数第二层和10维的最后一层结果。
+
+```
+
+```
