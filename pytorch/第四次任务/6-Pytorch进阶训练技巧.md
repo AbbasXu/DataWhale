@@ -251,3 +251,16 @@ image_aug = aug_seq(image=img)
 ia.imshow(image_aug)
 ```
 ### 对批次图片进行处理
+#### 对批次的图片以同一种方式处理
+将待处理的图片放在一个`list`中，并将image改为image即可进行数据增强操作。
+#### 对批次的图片分部分处理
+可以通过`imgaug.augmenters.Sometimes()`对batch中的一部分图片应用一部分Augmenters,剩下的图片应用另外的Augmenters。
+### 对不同大小的图片进行处理
+# 学习其他数据增强库
+Albumentations，Augmentor，imgaug
+
+---
+# 使用argparse进行调参
+## argparse简介
+这个库可以让我们直接在命令行中就可以向程序中传入参数。
+## argparse的使用
