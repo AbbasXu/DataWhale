@@ -16,4 +16,5 @@ def my_loss(output, target):
 ## 以类的方式定义
 特点：<font color=red>常用</font>
 损失函数类就需要继承自`nn.Module`类
-
+以DiceLoss为例，其数学公式如下所示： 
+$$DSC = \frac{2|X∩Y|}{|X|+|Y|}$$
