@@ -15,4 +15,5 @@ def my_loss(output, target):
 ```
 ## 以类的方式定义
 特点：<font color=red>常用</font>
+损失函数类就需要继承自`nn.Module`类
 
