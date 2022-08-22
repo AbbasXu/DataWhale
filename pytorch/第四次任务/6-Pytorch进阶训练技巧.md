@@ -76,7 +76,9 @@ def cosine_embedding_loss(input1, input2, target, margin=0, size_average=None,
 def multi_margin_loss(input, target, p=1, margin=1., weight=None, size_average=None):
 ```
 注：
-<font color=red>在自定义损失函数时，涉及到数学运算时，我们最好全程使用PyTorch提供的张量计算接口，这样就不需要我们实现自动求导功能并且我们可以直接调用cuda</font>
+<font color=red>在自定义损失函数时，涉及到数学运算时，我们最好全程使用PyTorch提供的张量计算接口，这样就不需要我们实现自动求导功能并且我们可以直接调用cuda。</font>
+
+---
 # 动态调整学习率
 ## 使用官方scheduler
 PyTorch已经在`torch.optim.lr_scheduler`为我们封装好了一些动态调整学习率的方法供我们使用
@@ -137,6 +139,7 @@ def set_parameter_requires_grad(model, feature_extracting):
         for param in model.parameters():
             param.requires_grad = False
 ```
+---
 # 模型微调 - timm
 里面提供了许多计算机视觉的SOTA模型，可以当作是torchvision的扩充版本，并且里面的模型在准确度上也较高。
 -   Github链接： https://github.com/rwightman/pytorch-image-models
@@ -192,3 +195,59 @@ torch.save(model.state_dict(),'./checkpoint/timm_model.pth')
 model.load_state_dict(torch.load('./checkpoint/timm_model.pth'))
 ```
 --- 
+# 半精度训练
+使用场景：适用于数据本身的size比较大（比如说3D图像、视频等）
+
+PyTorch默认的浮点数存储方式用的是`torch.float32`，小数点后位数更多固然能保证数据的精确性，但绝大多数场景其实并不需要这么精确，只保留一半的信息也不会影响结果，也就是使用`torch.float16`格式。由于数位减了一半，因此被称为“半精度”。
+![](https://obsidian-1305958072.cos.ap-guangzhou.myqcloud.com/obsidian_img/202208221510894.png)
+## 半精度训练的设置
+在PyTorch中使用autocast配置半精度训练，同时需要在下面三处加以设置：
+-   **import autocast**
+```
+from torch.cuda.amp import autocast
+```
+-   **模型设置**
+使用python的装饰器方法，用autocast装饰模型中的forward函数。
+```
+@autocast()   
+def forward(self, x):
+    ...
+    return x
+```
+-   **训练过程**
+```
+for x in train_loader:
+	x = x.cuda()
+	with autocast():
+        output = model(x)
+        ...
+```
+---
+# 数据增强-imgaug
+## imgaug简介
+`imgaug`是计算机视觉任务中常用的一个数据增强的包，相比于`torchvision.transforms`，它提供了更多的数据增强方法，因此在各种竞赛中，人们广泛使用`imgaug`来对数据进行增强操作。
+1.  Github地址：[imgaug](https://github.com/aleju/imgaug)
+2.  Readthedocs：[imgaug](https://imgaug.readthedocs.io/en/latest/source/examples_basics.html)
+3.  官方提供notebook例程：[notebook](https://github.com/aleju/imgaug-doc/tree/master/notebooks)
+##  imgaug的使用
+建议使用`imageio`进行读入图像，再使用`imgaug`操作，如果使用的是opencv进行文件读取的时候，需要进行手动改变通道，将读取的BGR图像转换为RGB图像。除此以外，当我们用PIL.Image进行读取时，因为读取的图片没有shape的属性，所以我们需要将读取到的img转换为np.array()的形式再进行处理。
+### 单张图片处理
+可能对一张图片做多种数据增强处理。这种情况下，我们就需要利用`imgaug.augmenters.Sequential()`来构造我们数据增强的pipline。
+
+```
+iaa.Sequential(children=None, # Augmenter集合
+               random_order=False, # 是否对每个batch使用不同顺序的Augmenter list
+               name=None,
+               deterministic=False,
+               random_state=None)
+# 构建处理序列
+aug_seq = iaa.Sequential([
+    iaa.Affine(rotate=(-25,25)),
+    iaa.AdditiveGaussianNoise(scale=(10,60)),
+    iaa.Crop(percent=(0,0.2))
+])
+# 对图片进行处理，image不可以省略，也不能写成images
+image_aug = aug_seq(image=img)
+ia.imshow(image_aug)
+```
+### 对批次图片进行处理
