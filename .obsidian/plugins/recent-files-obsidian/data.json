@@ -5,6 +5,10 @@
       "path": "pytorch/第四次任务/6-Pytorch进阶训练技巧.md"
     },
     {
+      "basename": "Home",
+      "path": "Home.md"
+    },
+    {
       "basename": "5-pytorch模型定义",
       "path": "pytorch/第三次任务/5-pytorch模型定义.md"
     },
@@ -27,10 +31,6 @@
     {
       "basename": "1 - 两数之和 TwoSum",
       "path": "Learninig/LeetCode/1 - 两数之和 TwoSum.md"
-    },
-    {
-      "basename": "Home",
-      "path": "Home.md"
     },
     {
       "basename": "README",

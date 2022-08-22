@@ -90,3 +90,21 @@ PyTorch已经在`torch.optim.lr_scheduler`为我们封装好了一些动态调�
 -   [`lr_scheduler.CyclicLR`](https://pytorch.org/docs/stable/generated/torch.optim.lr_scheduler.CyclicLR.html#torch.optim.lr_scheduler.CyclicLR)
 -   [`lr_scheduler.OneCycleLR`](https://pytorch.org/docs/stable/generated/torch.optim.lr_scheduler.OneCycleLR.html#torch.optim.lr_scheduler.OneCycleLR)
 -   [`lr_scheduler.CosineAnnealingWarmRestarts`](https://pytorch.org/docs/stable/generated/torch.optim.lr_scheduler.CosineAnnealingWarmRestarts.html#torch.optim.lr_scheduler.CosineAnnealingWarmRestarts)
+注：
+我们在使用官方给出的`torch.optim.lr_scheduler`时，需要将`scheduler.step()`放在`optimizer.step()`后面进行使用。
+## 自定义scheduler
+方法是自定义函数`adjust_learning_rate`来改变`param_group`中`lr`的值。以需要学习率每30轮下降为原来的1/10为例。
+
+```
+def adjust_learning_rate(optimizer, epoch):
+    lr = args.lr * (0.1 ** (epoch // 30))
+    for param_group in optimizer.param_groups:
+        param_group['lr'] = lr
+```
+# 模型微调-torchvision
+## 模型微调的流程
+1.  在源数据集(如ImageNet数据集)上预训练一个神经网络模型，即源模型。
+2.  创建一个新的神经网络模型，即目标模型。它复制了源模型上除了输出层外的所有模型设计及其参数。我们假设这些模型参数包含了源数据集上学习到的知识，且这些知识同样适用于目标数据集。我们还假设源模型的输出层跟源数据集的标签紧密相关，因此在目标模型中不予采用。
+3.  为目标模型添加一个输出⼤小为⽬标数据集类别个数的输出层，并随机初始化该层的模型参数。  
+4.  在目标数据集上训练目标模型。我们将从头训练输出层，而其余层的参数都是基于源模型的参数微调得到的。
+![](https://obsidian-1305958072.cos.ap-guangzhou.myqcloud.com/obsidian_img/202208221449538.png)
