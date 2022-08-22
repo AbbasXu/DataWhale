@@ -14,4 +14,5 @@ def my_loss(output, target):
     return loss
 ```
 ## 以类的方式定义
-特点：<font color=red>简单</font>
+特点：<font color=red>常用</font>
+
