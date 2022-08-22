@@ -33,7 +33,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#训",
+                "query": "tag:#训练",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
