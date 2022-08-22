@@ -264,3 +264,7 @@ Albumentations，Augmentor，imgaug
 ## argparse简介
 这个库可以让我们直接在命令行中就可以向程序中传入参数。
 ## argparse的使用
+-   创建`ArgumentParser()`对象
+-   调用`add_argument()`方法添加参数
+-   使用`parse_args()`解析参数
+例子：[argparse模块用法实例详解](https://zhuanlan.zhihu.com/p/56922793)
