@@ -101,6 +101,7 @@ def adjust_learning_rate(optimizer, epoch):
     for param_group in optimizer.param_groups:
         param_group['lr'] = lr
 ```
+---
 # 模型微调-torchvision
 ## 模型微调的流程
 1.  在源数据集(如ImageNet数据集)上预训练一个神经网络模型，即源模型。
@@ -108,3 +109,86 @@ def adjust_learning_rate(optimizer, epoch):
 3.  为目标模型添加一个输出⼤小为⽬标数据集类别个数的输出层，并随机初始化该层的模型参数。  
 4.  在目标数据集上训练目标模型。我们将从头训练输出层，而其余层的参数都是基于源模型的参数微调得到的。
 ![](https://obsidian-1305958072.cos.ap-guangzhou.myqcloud.com/obsidian_img/202208221449538.png)
+## 使用已有模型结构
+
+```
+import torchvision.models as models
+resnet18 = models.resnet18(pretrained=True)
+alexnet = models.alexnet(pretrained=True)
+squeezenet = models.squeezenet1_0(pretrained=True)
+vgg16 = models.vgg16(pretrained=True)
+densenet = models.densenet161(pretrained=True)
+inception = models.inception_v3(pretrained=True)
+googlenet = models.googlenet(pretrained=True)
+shufflenet = models.shufflenet_v2_x1_0(pretrained=True)
+mobilenet_v2 = models.mobilenet_v2(pretrained=True)
+mobilenet_v3_large = models.mobilenet_v3_large(pretrained=True)
+mobilenet_v3_small = models.mobilenet_v3_small(pretrained=True)
+resnext50_32x4d = models.resnext50_32x4d(pretrained=True)
+wide_resnet50_2 = models.wide_resnet50_2(pretrained=True)
+mnasnet = models.mnasnet1_0(pretrained=True)
+```
+## 训练特定层
+需要通过设置`requires_grad = False`来冻结部分层。
+
+```
+def set_parameter_requires_grad(model, feature_extracting):
+    if feature_extracting:
+        for param in model.parameters():
+            param.requires_grad = False
+```
+# 模型微调 - timm
+里面提供了许多计算机视觉的SOTA模型，可以当作是torchvision的扩充版本，并且里面的模型在准确度上也较高。
+-   Github链接： https://github.com/rwightman/pytorch-image-models
+-   官网链接： https://fastai.github.io/timmdocs/ https://rwightman.github.io/pytorch-image-models/
+## 查看预训练模型种类
+`timm.list_models()`
+1. 查看特定模型的所有种类
+```
+all_densnet_models = timm.list_models("*densenet*")
+all_densnet_models
+
+['densenet121',
+ 'densenet121d',
+ 'densenet161',
+ 'densenet169',
+ 'densenet201',
+ 'densenet264',
+ 'densenet264d_iabn',
+ 'densenetblur121d',
+ 'tv_densenet121']
+```
+2. 查看模型的具体参数
+过访问模型的`default_cfg`属性来进行查看
+```
+model = timm.create_model('resnet34',num_classes=10,pretrained=True)
+model.default_cfg
+
+{'url': 'https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-weights/resnet34-43635321.pth',
+ 'num_classes': 1000,
+ 'input_size': (3, 224, 224),
+ 'pool_size': (7, 7),
+ 'crop_pct': 0.875,
+ 'interpolation': 'bilinear',
+ 'mean': (0.485, 0.456, 0.406),
+ 'std': (0.229, 0.224, 0.225),
+ 'first_conv': 'conv1',
+ 'classifier': 'fc',
+ 'architecture': 'resnet34'}
+```
+## 使用和修改预训练模型
+- 创建模型
+通过`timm.create_model()`的方法来进行模型的创建。
+- 修改模型
+```
+model = timm.create_model('resnet34',num_classes=10,pretrained=True)
+x = torch.randn(1,3,224,224)
+output = model(x)
+output.shape
+```
+## 模型的保存
+```
+torch.save(model.state_dict(),'./checkpoint/timm_model.pth')
+model.load_state_dict(torch.load('./checkpoint/timm_model.pth'))
+```
+--- 
