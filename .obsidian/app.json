@@ -3,7 +3,7 @@
   "showLineNumber": true,
   "newFileLocation": "current",
   "trashOption": "local",
-  "autoConvertHtml": false,
+  "autoConvertHtml": true,
   "pdfExportSettings": {
     "pageSize": "Letter",
     "landscape": false,
