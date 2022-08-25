@@ -113,4 +113,7 @@ class activation map （CAM）的作用是判断哪些变量对模型来说是�
 ![](https://obsidian-1305958072.cos.ap-guangzhou.myqcloud.com/obsidian_img/202208251101762.png)
 ---
 # 使用TensorBoard可视化训练过程
+## TensorBoard可视化的基本逻辑
+可以记录我们指定的数据，包括模型每一层的feature map，权重，以及训练loss等等。TensorBoard将记录下来的内容保存在一个用户指定的文件夹里，程序不断运行中TensorBoard会不断记录。记录下的内容可以通过网页的形式加以可视化。
+## TensorBoard的配置与启动
 
