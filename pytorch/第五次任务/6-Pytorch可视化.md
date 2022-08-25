@@ -116,4 +116,45 @@ class activation map （CAM）的作用是判断哪些变量对模型来说是�
 ## TensorBoard可视化的基本逻辑
 可以记录我们指定的数据，包括模型每一层的feature map，权重，以及训练loss等等。TensorBoard将记录下来的内容保存在一个用户指定的文件夹里，程序不断运行中TensorBoard会不断记录。记录下的内容可以通过网页的形式加以可视化。
 ## TensorBoard的配置与启动
+```
+writer.add_graph(model, input_to_model = torch.rand(1, 3, 224, 224))
+writer.close()
+```
+展示结果如下：
+![](https://obsidian-1305958072.cos.ap-guangzhou.myqcloud.com/obsidian_img/202208251526951.png)
+## TensorBoard图像可视化
+```
+ 
+# 仅查看一张图片
+writer = SummaryWriter('./pytorch_tb')
+writer.add_image('images[0]', images[0])
+writer.close()
+ 
+# 将多张图片拼接成一张图片，中间用黑色网格分割
+# create grid of images
+writer = SummaryWriter('./pytorch_tb')
+img_grid = torchvision.utils.make_grid(images)
+writer.add_image('image_grid', img_grid)
+writer.close()
+ 
+# 将多张图片直接写入
+writer = SummaryWriter('./pytorch_tb')
+writer.add_images("images",images,global_step = 0)
+writer.close()
+```
+
+![](https://obsidian-1305958072.cos.ap-guangzhou.myqcloud.com/obsidian_img/202208251527037.png)
+## TensorBoard连续变量可视化
+TensorBoard可以用来可视化连续变量（或时序变量）的变化过程，通过add_scalar实现：
+```
+writer = SummaryWriter('./pytorch_tb')
+for i in range(500):
+    x = i
+    y = x**2
+    writer.add_scalar("x", x, i) #日志中记录x在第step i 的值
+    writer.add_scalar("y", y, i) #日志中记录y在第step i 的值
+writer.close()
+```
+可视化结果如下：
+![](https://obsidian-1305958072.cos.ap-guangzhou.myqcloud.com/obsidian_img/202208251529654.png)
 
