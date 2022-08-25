@@ -101,4 +101,16 @@ Estimated Total Size (MB): 87.11
 在PyTorch中可视化卷积核也非常方便，核心在于特定层的卷积核即特定层的模型权重，可视化卷积核就等价于可视化对应的权重矩阵。
 ![](https://obsidian-1305958072.cos.ap-guangzhou.myqcloud.com/obsidian_img/202208251046516.png)
 ## CNN特征图可视化方法
+在PyTorch中，提供了一个专用的接口使得网络在前向传播过程中能够获取到特征图，这个接口的名称非常形象，叫做hook。
+![](https://obsidian-1305958072.cos.ap-guangzhou.myqcloud.com/obsidian_img/202208251055348.png)
+## CNN class activation map可视化方法
+class activation map （CAM）的作用是判断哪些变量对模型来说是重要的，在CNN可视化的场景下，即判断图像中哪些像素点对预测结果是重要的。
+![](https://obsidian-1305958072.cos.ap-guangzhou.myqcloud.com/obsidian_img/202208251057519.png)
+## 使用FlashTorch快速实现CNN可视化
+-   可视化梯度
+![](https://obsidian-1305958072.cos.ap-guangzhou.myqcloud.com/obsidian_img/202208251059743.png)
+-   可视化卷积核
+![](https://obsidian-1305958072.cos.ap-guangzhou.myqcloud.com/obsidian_img/202208251101762.png)
+---
+# 使用TensorBoard可视化训练过程
 
