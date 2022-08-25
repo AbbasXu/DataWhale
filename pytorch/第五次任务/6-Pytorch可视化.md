@@ -2,7 +2,7 @@
 > Author : AbbasXu
 > Date : [[2022-08-18]]
 > Title : pytorch基础
-> Keywords : #pytroch #可视化
+> Keywords : #pytroch #可视化 #torchinfo #tensorboard #CAM
 ---
 # 可视化网络结构
 利用`torchinfo`库中的`torchinfo.summary()`即可
@@ -157,4 +157,37 @@ writer.close()
 ```
 可视化结果如下：
 ![](https://obsidian-1305958072.cos.ap-guangzhou.myqcloud.com/obsidian_img/202208251529654.png)
+多曲线
+
+```
+writer1 = SummaryWriter('./pytorch_tb/x')
+writer2 = SummaryWriter('./pytorch_tb/y')
+for i in range(500):
+    x = i
+    y = x*2
+    writer1.add_scalar("same", x, i) #日志中记录x在第step i 的值
+    writer2.add_scalar("same", y, i) #日志中记录y在第step i 的值
+writer1.close()
+writer2.close()
+```
+结果：
+![](https://obsidian-1305958072.cos.ap-guangzhou.myqcloud.com/obsidian_img/202208251531552.png)
+## TensorBoard参数分布可视化
+```
+import torch
+import numpy as np
+
+# 创建正态分布的张量模拟参数矩阵
+def norm(mean, std):
+    t = std * torch.randn((100, 20)) + mean
+    return t
+ 
+writer = SummaryWriter('./pytorch_tb/')
+for step, mean in enumerate(range(-10, 10, 1)):
+    w = norm(mean, 1)
+    writer.add_histogram("w", w, step)
+    writer.flush()
+writer.close()
+```
+![](https://obsidian-1305958072.cos.ap-guangzhou.myqcloud.com/obsidian_img/202208251533095.png)
 
