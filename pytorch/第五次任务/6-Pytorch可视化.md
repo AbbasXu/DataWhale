@@ -98,4 +98,7 @@ Estimated Total Size (MB): 87.11
 ---
 # CNN可视化
 ## CNN卷积核可视化
+在PyTorch中可视化卷积核也非常方便，核心在于特定层的卷积核即特定层的模型权重，可视化卷积核就等价于可视化对应的权重矩阵。
+![](https://obsidian-1305958072.cos.ap-guangzhou.myqcloud.com/obsidian_img/202208251046516.png)
+## CNN特征图可视化方法
 
