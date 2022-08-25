@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "pytorch/第四次任务/6-Pytorch进阶训练技巧.md",
+            "file": "pytorch/第五次任务/未命名.md",
             "mode": "source",
             "backlinks": true,
             "source": false
@@ -33,7 +33,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#训练",
+                "query": "tag:#学习率",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -99,7 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "pytorch/第四次任务/6-Pytorch进阶训练技巧.md",
+                "file": "pytorch/第五次任务/未命名.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,7 +116,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "pytorch/第四次任务/6-Pytorch进阶训练技巧.md",
+                "file": "pytorch/第五次任务/未命名.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -136,7 +136,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "pytorch/第四次任务/6-Pytorch进阶训练技巧.md"
+                "file": "pytorch/第五次任务/未命名.md"
               }
             }
           },
@@ -170,10 +170,10 @@
     "direction": "horizontal",
     "width": 325
   },
-  "active": "87ee98bc90cedd9a",
+  "active": "7ecbe7b5df0743ae",
   "lastOpenFiles": [
-    "pytorch/第四次任务/6-Pytorch进阶训练技巧.pdf",
     "pytorch/第四次任务/6-Pytorch进阶训练技巧.md",
+    "pytorch/第四次任务/6-Pytorch进阶训练技巧.pdf",
     "Home.md",
     "pytorch/第三次任务/5-pytorch模型定义.md",
     "pytorch/第二次任务/3-pytorch的主要组成模块.md",
