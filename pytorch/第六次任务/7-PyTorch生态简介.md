@@ -90,4 +90,10 @@ LABEL = data.Field(sequential=False, use_vocab=False)
 ​ fix_length设置此字段所有实例都将填充到一个固定的长度，方便后续处理；
 ​ use_vocab设置是否引入Vocab object，如果为False，则需要保证之后输入field中的data都是numerical的
 -   **词汇表（vocab）**
-将字符串形式的词语（word）转变为数字形式的向量表示（embedding）
+将字符串形式的词语（word）转变为数字形式的向量表示（embedding）的基本思想是收集一个比较大的语料库（尽量与所做的任务相关），在语料库中使用word2vec之类的方法构建词语到向量（或数字）的映射关系，之后将这一映射关系应用于当前的任务，将句子中的词语转为向量表示。
+-   **数据迭代器**
+就是torchtext中的DataLoader
+-   **使用自带数据集**
+[官方文档](https://pytorch.org/text/stable/datasets.html)
+## 评测指标（metric）
+并非用准确率来评价。翻译任务常用BLEU (bilingual evaluation understudy) score来评价预测文本和标签文本之间的相似程度。

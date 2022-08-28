@@ -5,6 +5,10 @@
       "path": "pytorch/第六次任务/7-PyTorch生态简介.md"
     },
     {
+      "basename": "8-PyTorch的模型部署",
+      "path": "pytorch/第六次任务/8-PyTorch的模型部署.md"
+    },
+    {
       "basename": "5-pytorch模型定义",
       "path": "pytorch/第三次任务/5-pytorch模型定义.md"
     },
