@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "7-PyTorch生态简介",
+      "path": "pytorch/第六次任务/7-PyTorch生态简介.md"
+    },
+    {
+      "basename": "5-pytorch模型定义",
+      "path": "pytorch/第三次任务/5-pytorch模型定义.md"
+    },
+    {
       "basename": "6-Pytorch可视化",
       "path": "pytorch/第五次任务/6-Pytorch可视化.md"
     },
@@ -15,10 +23,6 @@
     {
       "basename": "Home",
       "path": "Home.md"
-    },
-    {
-      "basename": "5-pytorch模型定义",
-      "path": "pytorch/第三次任务/5-pytorch模型定义.md"
     },
     {
       "basename": "3-pytorch的主要组成模块",

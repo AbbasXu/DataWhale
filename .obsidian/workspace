@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "pytorch/第五次任务/6-Pytorch可视化.md",
+            "file": "pytorch/第六次任务/7-PyTorch生态简介.md",
             "mode": "source",
             "backlinks": true,
             "source": false
@@ -33,7 +33,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#学习率",
+                "query": "tag:#模型搭建",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -99,7 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "pytorch/第五次任务/6-Pytorch可视化.md",
+                "file": "pytorch/第六次任务/7-PyTorch生态简介.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,7 +116,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "pytorch/第五次任务/6-Pytorch可视化.md",
+                "file": "pytorch/第六次任务/7-PyTorch生态简介.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -136,7 +136,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "pytorch/第五次任务/6-Pytorch可视化.md"
+                "file": "pytorch/第六次任务/7-PyTorch生态简介.md"
               }
             }
           },
@@ -172,15 +172,15 @@
   },
   "active": "87ee98bc90cedd9a",
   "lastOpenFiles": [
+    "pytorch/第三次任务/5-pytorch模型定义.md",
+    "pytorch/第六次任务/7-PyTorch生态简介.md",
+    "pytorch/第五次任务/6-Pytorch可视化.md",
     "pytorch/第四次任务/6-Pytorch进阶训练技巧.md",
     "pytorch/第四次任务/6-Pytorch进阶训练技巧.pdf",
     "Home.md",
-    "pytorch/第三次任务/5-pytorch模型定义.md",
     "pytorch/第二次任务/3-pytorch的主要组成模块.md",
     "pytorch/第二次任务/4-pytorch基础实战.md",
     "pytorch/第二次任务/4-pytorch基础实战.pdf",
-    "pytorch/第二次任务/3-pytorch的主要组成模块.pdf",
-    "pytorch/第一次任务/1-pytorch安装.pdf",
-    "pytorch/第一次任务/2-pytorch基础.md"
+    "pytorch/第二次任务/3-pytorch的主要组成模块.pdf"
   ]
 }
